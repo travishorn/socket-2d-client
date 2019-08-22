@@ -1,0 +1,26 @@
+{
+  "name": "socket-2d-client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "parcel src/index.html",
+    "build": "parcel --build src/index.html"
+  },
+  "keywords": [],
+  "author": "Travis Horn (https://travishorn.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^6.2.1",
+    "eslint-config-prettier": "^6.1.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "parcel-bundler": "^1.12.3",
+    "prettier": "^1.18.2"
+  },
+  "dependencies": {
+    "main.css": "^2.0.0",
+    "socket.io-client": "^2.2.0",
+    "vue": "^2.6.10"
+  }
+}

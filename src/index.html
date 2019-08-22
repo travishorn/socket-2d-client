@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Socket 2D</title>
+
+    <link rel="stylesheet" href="styles/main.css">
+  </head>
+  <body>
+    <h1>Socket 2D</h1>
+
+    <div id="app">
+      <svg viewBox="0 0 500 500">
+        <g :transform="`translate(${coordinates.x} ${coordinates.y})`">
+          <text text-anchor="middle"
+                y="-11">{{ nickname }}</text>
+          <circle r="10"
+                  :fill="color" />
+        </g>
+      </svg>
+    </div>
+
+    <script src="scripts/main.js"></script>
+  </body>
+</html>
