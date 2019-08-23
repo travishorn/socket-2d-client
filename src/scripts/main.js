@@ -8,7 +8,8 @@ new Vue({
       socket: null,
       nickname: null,
       coordinates: { x: 0, y: 0 },
-      color: "black"
+      color: "black",
+      remoteClients: []
     };
   },
   methods: {
@@ -38,13 +39,27 @@ new Vue({
       console.log("Server asks to set nickname.", nickname);
       this.nickname = nickname;
     },
-    setLocation(coordinates) {
-      console.log("Server asks to set location.", coordinates);
+    setCoordinates(coordinates) {
+      console.log("Server asks to set coordinates.", coordinates);
       this.coordinates = coordinates;
     },
     setColor(color) {
       console.log("Server asks to set color.", color);
       this.color = color;
+    },
+    addRemoteClient(remoteClient) {
+      if (remoteClient.nickname != this.nickname)
+        this.remoteClients.push(remoteClient);
+    },
+    resetRemoteClients() {
+      this.remoteClients = [];
+    },
+    setRemoteClientCoordinates(update) {
+      const remoteClient = this.remoteClients.find(rc => {
+        return rc.nickname === update.nickname;
+      });
+
+      remoteClient.coordinates = update.coordinates;
     },
     serverDisconnected(reason) {
       console.log("Disconnected from server.", reason);
@@ -55,8 +70,14 @@ new Vue({
 
     this.socket.on("connect", this.serverConnected);
     this.socket.on("setNickname", this.setNickname);
-    this.socket.on("setLocation", this.setLocation);
+    this.socket.on("setCoordinates", this.setCoordinates);
     this.socket.on("setColor", this.setColor);
+    this.socket.on("addRemoteClient", this.addRemoteClient);
+    this.socket.on("resetRemoteClients", this.resetRemoteClients);
+    this.socket.on(
+      "setRemoteClientCoordinates",
+      this.setRemoteClientCoordinates
+    );
     this.socket.on("disconnect", this.serverDisconnected);
 
     document.addEventListener("keydown", this.handleKeydown);
