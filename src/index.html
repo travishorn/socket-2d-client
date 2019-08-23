@@ -11,21 +11,22 @@
   <body>
     <h1>Socket 2D</h1>
 
-    <div id="app">
+    <div class="map" id="app">
       <svg viewBox="0 0 500 500">
         <g v-for="remoteClient in remoteClients"
            :transform="`translate(${remoteClient.coordinates.x} ${remoteClient.coordinates.y})`">
-          <text text-anchor="middle"
-                y="-15">{{ remoteClient.nickname }}</text>
           <circle r="10"
                   :fill="remoteClient.color" />
+          <text text-anchor="middle"
+                y="-12">{{ remoteClient.nickname }}</text>
         </g>
 
-        <g :transform="`translate(${coordinates.x} ${coordinates.y})`">
-          <text text-anchor="middle"
-                y="-15">{{ nickname }}</text>
+        <g class="self"
+           :transform="`translate(${coordinates.x} ${coordinates.y})`">
           <circle r="10"
-                  :fill="color" />
+           :fill="color" />
+          <text text-anchor="middle"
+                y="-12">{{ nickname }}</text>
         </g>
       </svg>
     </div>

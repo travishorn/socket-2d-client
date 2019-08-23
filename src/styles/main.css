@@ -1,4 +1,23 @@
-svg {
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swap');
+
+body {
+  font-family: 'Indie Flower', sans-serif;
+  text-align: center;
+  background-color: #222;
+  color: white;
+}
+
+.map svg {
   border: solid 1px gainsboro;
   max-width: 500px;
+  background-color: white;
+}
+
+text {
+  font-size: 18px;
+}
+
+.self text {
+  font-weight: bold;
+  fill: firebrick;
 }
